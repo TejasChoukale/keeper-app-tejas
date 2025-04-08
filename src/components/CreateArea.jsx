@@ -1,47 +1,69 @@
+//CreateArea.jsx
+
 import React, { useState } from "react";
 
-function CreateArea(props) {
-  const [note, setNote] = useState({
-    title: "",
-    content: ""
+function CreateArea({ onAdd }) {
+  const [note, setNote] = useState({ 
+    title: "", 
+    content: "", 
+    priority: "Low", 
+    subPriority: 1 
   });
 
   function handleChange(event) {
     const { name, value } = event.target;
-
-    setNote(prevNote => {
-      return {
-        ...prevNote,
-        [name]: value
-      };
-    });
+    setNote(prevNote => ({
+      ...prevNote,
+      [name]: name === 'subPriority' ? parseInt(value) : value
+    }));
   }
 
   function submitNote(event) {
-    props.onAdd(note);
-    setNote({
-      title: "",
-      content: ""
-    });
     event.preventDefault();
+    onAdd({
+      ...note,
+      subPriority: note.subPriority || 1
+    });
+    setNote({ title: "", content: "", priority: "Low", subPriority: 1 });
   }
 
   return (
     <div>
       <form>
-        <input
-          name="title"
-          onChange={handleChange}
-          value={note.title}
-          placeholder="Title"
+        <input 
+          name="title" 
+          value={note.title} 
+          onChange={handleChange} 
+          placeholder="Title" 
         />
-        <textarea
-          name="content"
-          onChange={handleChange}
-          value={note.content}
-          placeholder="Take a note..."
-          rows="3"
+        <textarea 
+          name="content" 
+          value={note.content} 
+          onChange={handleChange} 
+          placeholder="Take a note..." 
+          rows="3" 
         />
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+          <select 
+            name="priority" 
+            value={note.priority} 
+            onChange={handleChange}
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <input 
+            type="number" 
+            name="subPriority" 
+            value={note.subPriority} 
+            onChange={handleChange} 
+            min="1" 
+            max="10" 
+            style={{ width: '70px' }}
+            placeholder="Sub Priority"
+          />
+        </div>
         <button onClick={submitNote}>Add</button>
       </form>
     </div>
