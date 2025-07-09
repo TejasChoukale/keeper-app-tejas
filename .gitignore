@@ -1,2 +1,5 @@
 .vercel
 firebase.js
+node_modules
+dist
+.env
