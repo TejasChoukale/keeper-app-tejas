@@ -12,12 +12,12 @@ import {
 
 // Firebase configuration (✅ Corrected values)
 const firebaseConfig = {
-  apiKey: "AIzaSyACOjSjYBcB7hIfotggDvTw83e9pjz17xc",
-  authDomain: "keeper-webapp.firebaseapp.com",
-  projectId: "keeper-webapp",
-  storageBucket: "keeper-webapp.appspot.com",
-  messagingSenderId: "1067887778060",
-  appId: "1:1067887778060:web:361d26b3b2e62d8ff99129",
+  apiKey: "AIzaSyD4sZA8mLtZniJMM3xceIvqZQHx1xMhkgo",
+  authDomain: "ajayproject-4c603.firebaseapp.com",
+  projectId: "ajayproject-4c603",
+  storageBucket: "ajayproject-4c603.firebasestorage.app",
+  messagingSenderId: "925948661905",
+  appId: "1:925948661905:web:ec78d3194d45c767836f30",
   measurementId: "G-KC238JTCV5"
 };
 
